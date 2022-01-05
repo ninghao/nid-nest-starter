@@ -1,0 +1,37 @@
+{
+  "CQRS: Execute command": {
+    "prefix": "ec",
+    "body": [
+      "${3}this.commandBus.execute(",
+      "  new ${1:Name}Command(${2})",
+      ");"
+    ]
+  },
+  "CQRS: Publish event": {
+    "prefix": "pe",
+    "body": ["${3}this.eventBus.publish(", "  new ${1:Name}Event(${2})", ");"]
+  },
+  "CQRS: Execute query": {
+    "prefix": "eq",
+    "body": ["${3}this.queryBus.execute(", "  new ${1:Name}Query(${2})", ");"]
+  },
+  "CQRS: Constructor eventBus": {
+    "prefix": "ceb",
+    "body": ["private readonly eventBus: EventBus,"]
+  },
+  "CQRS: Constructor commandBus": {
+    "prefix": "ccb",
+    "body": ["private readonly commandBus: CommandBus,"]
+  },
+  "CQRS: Constructor queryBus": {
+    "prefix": "cqb",
+    "body": ["private readonly queryBus: QueryBus,"]
+  },
+  "TypeORM: Inject Repository": {
+    "prefix": "ir",
+    "body": [
+      "@InjectRepository(${1:Name}Entity)",
+      "private readonly ${2:name}Repository: Repository<${1:Name}Entity>,"
+    ]
+  }
+}
